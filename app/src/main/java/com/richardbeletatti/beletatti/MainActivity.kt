@@ -18,19 +18,25 @@ import androidx.compose.ui.text.toUpperCase
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.NavHost
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.rememberNavController
 import com.richardbeletatti.beletatti.ui.theme.BeletattiTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            BeletattiTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
-                ) {
-                    loginScreen()
+            val navController = rememberNavController()
+
+            NavHost(navController, startDestination = "loginScreen") {
+                composable("loginScreen") {
+                    loginScreen(navController)
+                }
+                composable("mainScreen") {
+                    mainScreen()
                 }
             }
         }
@@ -38,7 +44,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun loginScreen() {
+fun loginScreen(navController: NavController) {
     var textFieldStateEmail by remember { mutableStateOf(TextFieldValue()) }
     var textFieldStatePassword by remember { mutableStateOf(TextFieldValue()) }
 
@@ -72,7 +78,7 @@ fun loginScreen() {
 
         Button(
             onClick = {
-
+                navController.navigate("mainScreen")
             },
             modifier = Modifier
                 .padding(8.dp)
@@ -96,13 +102,5 @@ fun mainScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(text = "TELA PRINCIPAL =)")
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    BeletattiTheme {
-        loginScreen()
     }
 }
