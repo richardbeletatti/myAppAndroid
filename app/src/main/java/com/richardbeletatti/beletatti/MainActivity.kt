@@ -7,16 +7,15 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
-import androidx.compose.material.BottomNavigation
-import androidx.compose.material.BottomNavigationItem
-import androidx.compose.material.Icon
-import androidx.compose.material.Text
+import androidx.compose.material.*
+import androidx.compose.material.SnackbarDefaults.backgroundColor
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -62,11 +61,19 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.BottomCenter
                 ) {
-                    BottomNavigation {
+                    BottomNavigation(
+                        backgroundColor = Color.Blue
+                    ) {
                         navItems.forEach { item ->
                             BottomNavigationItem(
-                                icon = { Icon(item.icon, contentDescription = item.title) },
-                                label = { Text(item.title) },
+                                icon = {
+                                    Icon(
+                                        item.icon,
+                                        contentDescription = item.title,
+                                        tint = Color.White
+                                    )
+                                },
+                                label = { Text(item.title, color = Color.White) },
                                 selected = currentRoute == item.route,
                                 onClick = {
                                     navController.navigate(item.route) {
