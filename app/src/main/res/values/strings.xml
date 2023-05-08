@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Beletatti</string>
+    <string name="app_name">My List</string>
     <string name="email">E-mail</string>
     <string name="password">Senha</string>
     <string name="go">Entrar</string>
+    <string name="text_my_list">Minhas Listas</string>
+    <string name="create">Criar</string>
 </resources>

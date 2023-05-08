@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
                     contentAlignment = Alignment.BottomCenter
                 ) {
                     BottomNavigation(
-                        backgroundColor = Color.Blue
+                        backgroundColor = colorResource(id = com.richardbeletatti.beletatti.R.color.blue_800)
                     ) {
                         navItems.forEach { item ->
                             BottomNavigationItem(
