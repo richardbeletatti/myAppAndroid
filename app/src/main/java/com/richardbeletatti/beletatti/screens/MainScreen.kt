@@ -12,7 +12,6 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
@@ -44,21 +43,6 @@ class MainScreen {
                     modifier = Modifier
                         .align(Alignment.Center)
                 )
-                FloatingActionButton(
-                    onClick = { showDialog = true },
-                    modifier = Modifier
-                        .align(Alignment.BottomCenter)
-//                        .offset(x = (-16).dp, y = 670.dp)
-                        .size(64.dp),
-                    backgroundColor = colorResource(id = R.color.blue_500),
-                ) {
-                    Icon(
-                        Icons.Filled.Add,
-                        contentDescription = "Adicionar",
-                        tint = colorResource(id = R.color.white),
-                        modifier = Modifier.size(32.dp)
-                    )
-                }
             }
 
             // ABRINDO CAIXA DE DIALOGO PARA CRIAR NOVA LISTA
@@ -137,6 +121,24 @@ class MainScreen {
                         )
                     }
                 }
+            }
+        }
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(bottom = 68.dp, end = 24.dp),
+            contentAlignment = Alignment.BottomEnd
+        ) {
+            FloatingActionButton(
+                onClick = { showDialog = true },
+                backgroundColor = colorResource(id = R.color.blue_500),
+            ) {
+                Icon(
+                    Icons.Filled.Add,
+                    contentDescription = "Adicionar",
+                    tint = colorResource(id = R.color.white),
+                    modifier = Modifier.size(32.dp)
+                )
             }
         }
     }
